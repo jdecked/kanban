@@ -1,39 +1,18 @@
 import React, { Component } from 'react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import KanbanList from './KanbanList';
-import KanbanCard from './KanbanCard';
 
-export default class KanbanBoard extends Component {
+class KanbanBoard extends Component {
   render() {
     return (
       <article className='kanban-board'>
-        <KanbanList
-          title='To Do'
-          cards={
-            <section className='kanban-cards'>
-              <KanbanCard task='Call mom' />
-              <KanbanCard task='Call dad' />
-            </section>
-          }
-        />
-        <KanbanList
-          title='Doing'
-          cards={
-            <section className='kanban-cards'>
-              <KanbanCard task='Finish homework' />
-              <KanbanCard task='Go to sleep' />
-            </section>
-          }
-        />
-        <KanbanList
-          title='Done'
-          cards={
-            <section className='kanban-cards'>
-              <KanbanCard task='Eat dinner' />
-              <KanbanCard task='Hope' />
-            </section>
-          }
-        />
+        <KanbanList title='To Do' />
+        <KanbanList title='Doing' />
+        <KanbanList title='Done' />
       </article>
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(KanbanBoard);
